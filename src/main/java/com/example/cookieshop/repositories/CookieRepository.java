@@ -23,7 +23,6 @@ public class CookieRepository {
 
     public Cookie getCookieById(int id){
         Cookie cookieToReturn = null;
-
         switch(id){
             case 1 :
                 cookieToReturn = new Cookie(1,"Chocolate", 30);

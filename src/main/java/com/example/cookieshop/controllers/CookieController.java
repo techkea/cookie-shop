@@ -13,6 +13,11 @@ import javax.servlet.http.HttpSession;
 public class CookieController {
     CookieRepository repo = new CookieRepository();
 
+    @GetMapping("/")
+    public String index(HttpSession session){
+        return "index";
+    }
+
     @GetMapping("/basket")
     public String basket(HttpSession session){
         return "basket";
