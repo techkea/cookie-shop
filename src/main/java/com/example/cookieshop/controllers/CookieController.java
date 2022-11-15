@@ -35,13 +35,10 @@ public class CookieController {
 
     @GetMapping("/addToBasket")
     public String add(@RequestParam String id, HttpSession session){
+        // Add functionality such that a customer can add cookies to his/her basket and change pages without losing the baskets state
         var c = repo.getCookieById(Integer.parseInt(id));
-
         basket.add(c);
-        System.out.println(basket);
-
         session.setAttribute("basket", basket);
-        System.out.println(session.getAttribute("basket"));
 
         return "redirect:/shop";
     }
