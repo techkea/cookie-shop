@@ -8,10 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class CookieController {
-    CookieRepository repo = new CookieRepository();
+    private CookieRepository repo = new CookieRepository();
+    private List<Cookie> basket = new ArrayList<>();
 
     @GetMapping("/")
     public String index(HttpSession session){
@@ -20,17 +23,26 @@ public class CookieController {
 
     @GetMapping("/basket")
     public String basket(HttpSession session){
+        session.getAttribute("basket");
         return "basket";
     }
 
     @GetMapping("/shop")
     public String basket(HttpSession session, Model cookieModel){
         cookieModel.addAttribute("cookies",repo.getAllCookies());
-        return "shop"; // comment to add to git
+        return "shop";
     }
 
     @GetMapping("/addToBasket")
-    public String add(@RequestParam String id){
-        return "";
+    public String add(@RequestParam String id, HttpSession session){
+        var c = repo.getCookieById(Integer.parseInt(id));
+
+        basket.add(c);
+        System.out.println(basket);
+
+        session.setAttribute("basket", basket);
+        System.out.println(session.getAttribute("basket"));
+
+        return "redirect:/shop";
     }
 }

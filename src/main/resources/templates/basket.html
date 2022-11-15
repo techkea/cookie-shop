@@ -12,11 +12,16 @@
             <a class="navbar-brand" href="/shop">Shop</a>
             <a class="navbar-brand" href="/basket">Basket</a>
         </nav>
-
-        <tr th:each="cookie : ${basket}">
-            <td th:text="cookie.getName()"></td>
-            <td th:text="cookie.getPrice()"></td>
-        </tr>
+        <table class="table table-striped table-dark">
+            <tr>
+                <th>Cookie</th>
+                <th>Price</th>
+            </tr>
+            <tr th:each="cookie : ${session.basket}">
+                <td th:text="${cookie.name}"></td>
+                <td th:text="${cookie.price}"></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
