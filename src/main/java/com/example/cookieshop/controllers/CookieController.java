@@ -26,7 +26,7 @@ public class CookieController {
     @GetMapping("/shop")
     public String basket(HttpSession session, Model cookieModel){
         cookieModel.addAttribute("cookies",repo.getAllCookies());
-        return "shop";
+        return "shop"; // comment to add to git
     }
 
     @GetMapping("/addToBasket")
