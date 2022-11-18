@@ -1,37 +1,41 @@
 package com.example.cookieshop.controllers;
 
+import com.example.cookieshop.models.Person;
+import com.example.cookieshop.repositories.LoginRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
 
-    @GetMapping("/login")
-    public String login(HttpSession session){
-        // SELECT * from users where name = ?
-        // if user == claus{
-            session.setAttribute("user", "Claus");
-        return "login";
-         }
+    LoginRepository repo = new LoginRepository();
 
+    @PostMapping ("/login")
+    public String login(HttpSession session, WebRequest req){
 
-    @GetMapping("/secrets")
-    public String verySecretSide(HttpSession session){
-        var ses = session.getAttribute("user");
-        if(ses.equals("Claus")){
-            return "secrets";
+        Person person = new Person(req.getParameter("user"), req.getParameter("pass"));
+        int userId = repo.loggedin(person);
+
+        if(userId == -1){
+            return "redirect:/";
         }
-
-        return "redirect:/";
+        session.setAttribute("log", userId);
+        return "redirect:/shop";
 
     }
 
-    @GetMapping("/logout")
+    @GetMapping("logout")
     public String logout(HttpSession session){
+        System.out.println(session.getAttribute("log"));
         session.invalidate();
         return "redirect:/";
     }
+
+
+
 
 }

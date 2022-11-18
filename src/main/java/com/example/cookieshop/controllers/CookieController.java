@@ -32,19 +32,22 @@ public class CookieController {
 
     @GetMapping("/shop")
     public String basket(HttpSession session, Model cookieModel){
+        if(session.getAttribute("log") == null){
+            return "redirect:/";
+        }
         cookieModel.addAttribute("cookies",repo.getAllCookies());
         return "shop";
     }
     @GetMapping("/addToBasket")
-    public String add(@RequestParam String id, HttpSession session){
+    public String add(@RequestParam String id, HttpSession ses){
         // Add functionality such that a customer can add cookies to his/her basket and change pages without losing the baskets state
         var c = repo.getCookieById(Integer.parseInt(id));
         basket.add(c);
-        session.setAttribute("basket", basket);
+        ses.setAttribute("basket", basket);
 
         // Add functionality such that the basket page displays the total sum of the price of cookies in his/hers basket
-        session.setAttribute("sum", service.calculatePrice(basket));
-        session.setAttribute("itemsInBasket", service.itemsInBasket(basket));
+        ses.setAttribute("sum", service.calculatePrice(basket));
+        ses.setAttribute("itemsInBasket", service.itemsInBasket(basket));
         return "redirect:/shop";
     }
 }
