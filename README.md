@@ -2,13 +2,12 @@
 
 # Sessions
 
-**Case**: [https://github.com/2-semester-programmering/cookie-shop](https://github.com/2-semester-programmering/cookie-shop)
+**Case**: [https://github.com/techkea/cookie-shop.git](https://github.com/techkea/cookie-shop.git)
 
-
-## Læringsmål:
-- Hvad er en session, og hvorfor bruger vi den?
-- Implementering af session for Spring Boot
-- Rendering af sessioner ved hjælp af Thymeleaf
+## Learning Goals:
+- What is a session and why do we use it?
+- Implementing session for spring boot
+- Rendering sessions using Thymeleaf
 
 ## Sessions
 
