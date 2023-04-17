@@ -4,11 +4,11 @@
 
 **Case**: [https://github.com/2-semester-programmering/cookie-shop](https://github.com/2-semester-programmering/cookie-shop)
 
-- What is a session and why do we use it?
-- Implementing session for spring boot
-- Rendering sessions using Thymeleaf
 
-
+## Læringsmål:
+- Hvad er en session, og hvorfor bruger vi den?
+- Implementering af session for Spring Boot
+- Rendering af sessioner ved hjælp af Thymeleaf
 
 ## Sessions
 
@@ -18,7 +18,7 @@ Now the problem with that is that HTTP is stateless. This means that there is no
 
 This problem is solved using sessions. 
 
-![Screenshot 2021-02-24 at 10.18.38](Untitled.assets/session-server.png)
+![Screenshot 2021-02-24 at 10.18.38](util/session-server.png)
 
 
 
@@ -114,13 +114,13 @@ In Spring boot sessions is implemented using cookies. Cookies is a small text fi
 
 Here is a screenshot of how the cookie is stored in the browser
 
-![Screenshot 2021-02-23 at 14.56.11](Untitled.assets/cookie-browser.png)
+![Screenshot 2021-02-23 at 14.56.11](util/cookie-browser.png)
 
 
 
 Here is a screenshot of how the cookie id is sent in the request
 
-![Screenshot 2021-02-23 at 14.58.04](Untitled.assets/cookie-sent-on-request.png)
+![Screenshot 2021-02-23 at 14.58.04](util/cookie-sent-on-request.png)
 
 
 
